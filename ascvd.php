@@ -49,7 +49,7 @@ function calculateRiskPercentage($ascvdScore)
 {
     $riskPercentages = [
         0 => 5,
-         5 => 7,
+        5 => 7,
         10 => 11,
         15 => 16,
         20 => 22,
@@ -92,7 +92,7 @@ try {
     // Output risk percentage
     echo "Risk Percentage: " . $riskPercentage . "<br>";
 
-    // Generate chart
+    // Chart data
     $data = [
         ['ASCVD Score', 'Risk Percentage'],
         ['0-4', 5],
@@ -105,12 +105,13 @@ try {
         ['35-39', 45],
         ['40-44', 54],
         ['45-49', 64],
-        ['50+', 75]
+        ['50+', 75],
     ];
 
     $labels = array_column($data, 0);
-    $percentages = array_column($data, 1);
+    $percentages = array_map('intval', array_column($data, 1));
 
+    // Generate chart
     $graph = new Graph(400, 300);
     $graph->SetScale('textlin', 0, 80);
     $graph->SetMargin(50, 30, 30, 50);
@@ -120,7 +121,7 @@ try {
     $barplot->SetFillColor('lightblue');
     $graph->Add($barplot);
 
-    $chartFilename = 'chart.png';
+    $chartFilename = 'C:\xampp\htdocs\ascvd\fpdf-ASCVD-Risk-Calculator\chart.png';
     $graph->Stroke($chartFilename);
 } catch (Exception $e) {
     echo "An error occurred: " . $e->getMessage();
