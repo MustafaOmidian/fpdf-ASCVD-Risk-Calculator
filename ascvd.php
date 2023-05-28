@@ -118,7 +118,7 @@ try {
     $graph->xaxis->SetTickLabels($labels);
 
     $barplot = new BarPlot($percentages);
-    $barplot->SetFillColor('lightblue');
+    $barplot->SetFillColor('blue');
     $graph->Add($barplot);
 
     $chartFilename = 'C:\xampp\htdocs\ascvd\fpdf-ASCVD-Risk-Calculator\chart.png';
